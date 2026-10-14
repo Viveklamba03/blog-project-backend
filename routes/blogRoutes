@@ -1,0 +1,20 @@
+const express = require("express");
+const router = express.Router();
+const {
+  getAllBlogs,
+  getBlogBySlug,
+  createBlog,
+  updateBlog,
+  deleteBlog,
+} = require("../controllers/blogController");
+
+// Public routes
+router.get("/", getAllBlogs);           // GET  /api/blogs
+router.get("/:slug", getBlogBySlug);    // GET  /api/blogs/india-vs-australia
+
+// Admin routes (add auth middleware here later)
+router.post("/", createBlog);           // POST /api/blogs
+router.put("/:id", updateBlog);         // PUT  /api/blogs/:id
+router.delete("/:id", deleteBlog);      // DELETE /api/blogs/:id
+
+module.exports = router;
